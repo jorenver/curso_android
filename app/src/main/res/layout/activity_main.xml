@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/main_opcion1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_label_opcion1"
+            style="@style/miEstilo"
+            />
+        <RadioButton
+            android:id="@+id/main_opcion2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_label_opcion2"
+            style="@style/miEstilo"
+            />
+        <RadioButton
+            android:id="@+id/main_opcion3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_label_opcion3"
+            style="@style/miEstilo"
+            />
+        <RadioButton
+            android:id="@+id/main_opcion4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_label_opcion4"
+            style="@style/miEstilo"
+            />
+    </RadioGroup>
+    <Button
+        android:id="@+id/main_boton_mostrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/main_label_boton"/>
+    <Button
+        android:id="@+id/main_boton_abrir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abrir"/>
+
+</LinearLayout>

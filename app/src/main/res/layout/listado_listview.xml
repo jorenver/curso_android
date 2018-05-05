@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <CheckBox
+        android:id="@+id/listado_listview_check"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".10"/>
+
+    <TextView
+        android:id="@+id/listado_listview_texto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".80"/>
+
+    <ImageButton
+        android:id="@+id/listado_listview_eliminar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_delete"
+        android:layout_weight=".10"/>
+
+</LinearLayout>

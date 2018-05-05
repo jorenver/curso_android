@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">App</string>
+    <string translatable="true" name="main_label_opcion1">Toast</string>
+    <string translatable="true" name="main_label_opcion2">Dialog</string>
+    <string translatable="true" name="main_label_opcion3">SnackBar</string>
+    <string translatable="true" name="main_label_opcion4">Notification</string>
+    <string translatable="true" name="main_label_boton">Mostrar</string>
+    <string-array name="datos_arreglo">
+        <item>Guayaquil</item>
+        <item>Quito</item>
+        <item>Cuenca</item>
+        <item>Manta</item>
+    </string-array>
+    <string translatable="true" name="main_dialog_label_dialog_si"> Aceptar</string>
+    <string translatable="true" name="main_dialog_label_dialog_no"> Cancelar</string>
+</resources>
