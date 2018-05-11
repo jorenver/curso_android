@@ -1,7 +1,9 @@
 package com.ponlemas.app;
 
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
@@ -14,10 +16,17 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.ponlemas.app.acceso_datos.dbhandler.ClienteContract;
+import com.ponlemas.app.acceso_datos.xmlhandler.XmlHandler;
+import com.ponlemas.app.dominio.Cliente;
+
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener, MainActivityDialog.DialogListener{
     private RadioButton main_radio1, main_radio2, main_radio3, main_radio4;
     private Button main_boton_mostrar, main_boton_abrir;
+    private ProgressDialog progressDialog;
 
 
     @Override
@@ -42,6 +51,18 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             }
         });
 
+        ClienteContract clienteContract = new ClienteContract(this);
+        Cliente obj_cliente = new Cliente();
+        obj_cliente.setId(1);
+        obj_cliente.setNombre("Nombre 1");
+        obj_cliente.setTelefono("Telefono 1");
+        obj_cliente.setEmail("Email");
+        clienteContract.insert(obj_cliente);
+
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMax(100);
+        XMLTaskParser xmlTaskParser = new XMLTaskParser();
+        xmlTaskParser.execute("https://www.eluniverso.com/rss/politica.xml");
     }
 
     @Override
@@ -81,5 +102,27 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     @Override
     public void onDialogNegativeClick(DialogFragment dialog){
         Toast.makeText(getBaseContext(), "Preciono Cancelar", Toast.LENGTH_SHORT).show();
+    }
+
+    class XMLTaskParser extends AsyncTask<String, Void, ArrayList> {
+
+        @Override
+        protected ArrayList doInBackground(String... strings) {
+            XmlHandler xmlHandler = new XmlHandler(MainActivity.this);
+            return xmlHandler.parseXMLSAX(strings[0]);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setMessage("Descargando...");
+            progressDialog.setTitle("Archivo RSS");
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList arrayList) {
+            progressDialog.dismiss();
+            Toast.makeText(MainActivity.this,"SE ENCONTRARON : "+String.valueOf(arrayList.size())+" NOTICIAS" , Toast.LENGTH_SHORT).show();
+        }
     }
 }
